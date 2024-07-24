@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen items-center justify-between">
-      <ImagesSlider className="h-[40rem]" images={images}>
+      <ImagesSlider className="h-screen" images={images}>
         <motion.div
           initial={{
             opacity: 0,
@@ -90,7 +90,7 @@ export default function Home() {
         </motion.div>
       </ImagesSlider>
 
-      <section className="container my-36 px-4">
+      <section className="container my-10 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white dark:bg-slate-600 border-4 border-sky-500 shadow-md rounded-lg p-6 text-center">
             <h2 className="text-xl font-bold">Ketersediaan Parkir</h2>
@@ -105,7 +105,7 @@ export default function Home() {
             <p className="text-4xl mt-4 text-red-600">{totalRaguSlots()}</p>
           </div>
         </div>
-        <div className="container pt-10 text-l font-bold mb-10 text-center">
+        <div className="container pt-10 text-l font-bold mb-5 text-center">
           <button className="p-5 backdrop-blur-sm border bg-blue-500 border-emerald-500/20 text-white mx-2 text-center rounded-full relative mt-4 hover:bg-blue-950" onClick={() => setIsModalOpen(true)}>
             Watch Streaming Video
           </button>
@@ -118,7 +118,6 @@ export default function Home() {
           </button>
         </div>
       </section>
-
       <section className="container mb-8 px-4">
         <h2 className="text-4xl font-bold mb-10 text-center">Komparasi Parkir</h2>
         <div className="grid grid-cols-4 md:grid-cols-4 gap-4">

@@ -1,6 +1,6 @@
 // components/navbar.tsx
 "use client"
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { FaBeer } from 'react-icons/fa';
 import { Moon, Sun } from "lucide-react";
@@ -14,9 +14,26 @@ import {
 
 const Navbar: React.FC = () => {
   const { setTheme } = useTheme();
+  const [scrollY, setScrollY] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setVisible(currentScrollY < scrollY || currentScrollY < 10);
+      setScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollY]);
 
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav
+      className={`fixed top-0 left-1/2 transform -translate-x-1/2 bg-gray-800 p-4 mt-4 rounded-full z-50 container transition-transform duration-300 ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <FaBeer className="text-white mr-2" />
